@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 01/12/2017 19:43:32 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.mycompany.agendaturnos.Turno" table="Turno" catalog="agendaTurnos" optimistic-lock="version">
+        <id name="idTurno" type="int">
+            <column name="idTurno" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="cliente" class="com.mycompany.agendaturnos.Cliente" fetch="select">
+            <column name="fk_idcliente" not-null="true" />
+        </many-to-one>
+        <property name="descripcion" type="string">
+            <column name="descripcion" length="45" />
+        </property>
+        <property name="fecha" type="date">
+            <column name="fecha" length="10" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 01/12/2017 19:43:32 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.mycompany.agendaturnos.Cliente" table="cliente" catalog="agendaTurnos" optimistic-lock="version">
+        <id name="idcliente" type="java.lang.Integer">
+            <column name="idcliente" />
+            <generator class="identity" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="nombre" length="45" not-null="true" />
+        </property>
+        <property name="telefono" type="string">
+            <column name="telefono" length="45" />
+        </property>
+        <property name="descripcion" type="string">
+            <column name="descripcion" length="45" />
+        </property>
+        <set name="turnos" table="Turno" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="fk_idcliente" not-null="true" />
+            </key>
+            <one-to-many class="com.mycompany.agendaturnos.Turno" />
+        </set>
+    </class>
+</hibernate-mapping>
